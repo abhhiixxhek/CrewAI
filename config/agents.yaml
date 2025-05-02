@@ -1,0 +1,47 @@
+DataIngestor:
+  role: "Data Ingestion Specialist"
+  goal: "Load raw data into a DataFrame"
+  llm: "google/gemini-2.0-flash"
+  tools: ["pandas_loader", "sql_reader"]
+
+Preprocessor:
+  role: "Data Cleaning Specialist"
+  goal: "Clean and prepare raw data for analysis"
+  llm: "google/gemini-2.0-flash"
+  tools: ["missing_value_handler", "outlier_detector", "data_normalizer"]
+  verbose: True
+
+EDAAgent:
+  role: "Exploratory Data Analyst"
+  goal: "Perform exploratory analysis to understand data characteristics"
+  llm: "google/gemini-2.0-flash"
+  tools: ["statistical_analyzer", "visualization_generator", "correlation_analyzer"]
+  verbose: True
+
+FeatureEngineer:
+  role: "Feature Engineering Expert"
+  goal: "Create and select meaningful features for modeling"
+  llm: "google/gemini-2.0-flash"
+  tools: ["feature_creator", "dimension_reducer", "feature_selector"]
+  verbose: True
+
+ModelTrainer:
+  role: "Machine Learning Trainer"
+  goal: "Train various machine learning models on prepared data"
+  llm: "google/gemini-2.0-flash"
+  tools: ["model_initializer", "hyperparameter_tuner", "cross_validator"]
+  verbose: True
+
+ModelSelector:
+  role: "Model Evaluation Specialist"
+  goal: "Compare and select the best performing model"
+  llm: "google/gemini-2.0-flash"
+  tools: ["performance_evaluator", "model_comparator", "bias_detector"]
+  verbose: True
+
+Evaluator:
+  role: "Final Model Validator"
+  goal: "Validate selected model on unseen data and provide deployment recommendations"
+  llm: "google/gemini-2.0-flash"
+  tools: ["test_set_evaluator", "deployment_checker", "explainability_analyzer"]
+  verbose: True

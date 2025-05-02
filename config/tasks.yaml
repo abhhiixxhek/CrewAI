@@ -1,0 +1,69 @@
+load_data:
+  agent: "DataIngestor"
+  description: "Connect to S3 or local CSV and load raw dataset"
+  expected_output: "pandas.DataFrame with raw data"
+  tools: ["pandas_loader", "sql_reader"]
+  async_execution: false
+
+clean_data:
+  agent: "Preprocessor"
+  description: "Handle missing values, normalize formats, and remove duplicates"
+  expected_output: "Cleaned pandas.DataFrame ready for EDA"
+  tools: ["missing_value_handler", "outlier_detector"]
+  async_execution: false
+
+perform_eda:
+  agent: "EDAAgent"
+  description: "Generate statistical summaries and visualizations of the dataset"
+  expected_output: "EDA report with insights and visualizations"
+  tools: ["statistical_analyzer", "visualization_generator"]
+  async_execution: false
+
+feature_engineering:
+  agent: "FeatureEngineer"
+  description: "Create new features, encode categorical variables, and select important features"
+  expected_output: "Processed DataFrame with optimal feature set"
+  tools: ["feature_creator", "dimension_reducer"]
+  async_execution: false
+
+split_data:
+  agent: "Preprocessor"
+  description: "Split dataset into training, validation, and test sets"
+  expected_output: "X_train, X_test, y_train, y_test variables"
+  tools: ["data_splitter"]
+  async_execution: false
+
+train_models:
+  agent: "ModelTrainer"
+  description: "Train multiple baseline models with default parameters"
+  expected_output: "Dictionary of trained model objects with initial scores"
+  tools: ["model_initializer"]
+  async_execution: false
+
+tune_models:
+  agent: "ModelTrainer"
+  description: "Perform hyperparameter tuning on promising models"
+  expected_output: "Optimized models with best parameters"
+  tools: ["hyperparameter_tuner", "cross_validator"]
+  async_execution: false
+
+select_model:
+  agent: "ModelSelector"
+  description: "Compare model performance and select the best candidate"
+  expected_output: "Best performing model object with evaluation metrics"
+  tools: ["performance_evaluator", "model_comparator"]
+  async_execution: false
+
+final_evaluation:
+  agent: "Evaluator"
+  description: "Evaluate selected model on test set and check deployment readiness"
+  expected_output: "Final evaluation report with deployment recommendations"
+  tools: ["test_set_evaluator", "deployment_checker"]
+  async_execution: false
+
+generate_documentation:
+  agent: "Evaluator"
+  description: "Create model documentation with explainability insights"
+  expected_output: "Model documentation report"
+  tools: ["explainability_analyzer"]
+  async_execution: false
